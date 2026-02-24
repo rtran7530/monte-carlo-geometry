@@ -1,116 +1,101 @@
 # Monte Carlo Methods for Geometric Probability
 
-A computational approach to solving classic geometric probability problems using Monte Carlo simulation methods.
+A computational approach to solving the classic problem(s): 
+What is the average distance between two random points in a unit square? A unit circle?
 
-## Overview
+## The Problem
 
-This project demonstrates the power of Monte Carlo methods in approximating solutions to geometric probability questions that are difficult or impossible to solve analytically. By generating thousands of random samples and computing statistics, we can obtain highly accurate numerical approximations.
+![Problem Diagrams](problem_diagrams.png)
 
-## Problems Solved
+**Unit Square:** If you randomly pick two points in a square with sides of length 1, what is the expected distance between them?
 
-### 1. Average Distance Between Two Random Points in Unit Square
-**Question:** If you pick two random points in a unit square [0,1] × [0,1], what is the expected distance between them?
+**Unit Circle:** What about if the points are in a circle with radius 1?
 
-**Monte Carlo Approach:** Generate 100,000 pairs of random points, calculate distances, and average the results.
+These problems are difficult to solve analytically (they require complex multivariable calculus), but Monte Carlo simulation provides an elegant computational solution.
 
-**Result:** ~0.521405 (matches analytical solution)
+## Monte Carlo Approach
 
-### 2. Average Distance Between Two Random Points in Unit Circle
-**Question:** If you pick two random points uniformly in a unit circle, what is the expected distance between them?
+Instead of solving with calculus, we:
+1. Generate 100,000 pairs of random points
+2. Calculate the distance for each pair
+3. Average all the distances
 
-**Monte Carlo Approach:** Use rejection sampling to generate points uniformly within the circle, calculate distances, and average.
+This approximates the analytical solution with high accuracy.
 
-**Result:** ~0.905414 (analytical: 128/(45π))
+## Results
 
-### 3. Probability of Acute Triangle
-**Question:** If you pick three random points in a unit square, what is the probability they form an acute triangle?
+| Geometry | Monte Carlo Result | Analytical Value | Error |
+|----------|-------------------|------------------|-------|
+| Unit Square | ~0.521405 | 0.521405 | <0.01% |
+| Unit Circle | ~0.905414 | 128/(45π) ≈ 0.905414 | <0.01% |
 
-**Monte Carlo Approach:** Generate random triangles and check if all angles are less than 90°.
-
-### 4. Expected Area of Random Triangle
-**Question:** What is the expected area of a triangle formed by three random points in a unit square?
-
-**Monte Carlo Approach:** Generate random triangles, calculate areas using cross product, and average.
-
-**Result:** ~0.083333 (analytical: 1/12)
-
-## Technical Implementation
+## Implementation
 
 ### Core Algorithm
 ```python
-# Generate random samples
-for i in range(num_simulations):
-    sample = generate_random_sample()
-    measurement = calculate_property(sample)
-    results.append(measurement)
+distances = []
+for i in range(100000):
+    point1 = random_point_in_square()
+    point2 = random_point_in_square()
+    distance = calculate_distance(point1, point2)
+    distances.append(distance)
 
-# Compute average
-estimate = mean(results)
+average_distance = mean(distances)
 ```
 
 ### Key Techniques
-- **Random sampling:** `numpy.random.uniform()` for generating random points
+- **Random sampling:** Generating uniform random points
 - **Rejection sampling:** For uniform distribution within circles
-- **Statistical analysis:** Computing means, distributions, and convergence
-- **Visualization:** Matplotlib for plotting results
+- **Convergence analysis:** Demonstrating the Law of Large Numbers
+- **Statistical visualization:** Plotting distributions and convergence
 
 ## Files
 
 - `monte_carlo_geometry.py` - Core Monte Carlo simulation functions
-- `visualizations.py` - Plotting and visualization code
+- `visualizations.py` - Plotting and visualization code  
 - `README.md` - This file
 - `requirements.txt` - Python dependencies
 
-## Installation
+## Installation & Usage
 ```bash
-# Create virtual environment
+# Setup
 python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
+source venv/bin/activate
 pip install -r requirements.txt
-```
 
-## Usage
-
-### Run simulations only:
-```bash
+# Run simulations
 python monte_carlo_geometry.py
-```
 
-### Run simulations with visualizations:
-```bash
+# Generate visualizations
 python visualizations.py
 ```
 
-This generates four PNG files:
-- `distance_distributions.png` - Histograms of distance distributions
-- `convergence_plot.png` - Shows how estimates improve with more samples
-- `sample_points.png` - Visualization of random point sampling
-- `triangle_area_distribution.png` - Distribution of triangle areas
+## Visualizations
 
-## Results
+The code generates three plots:
 
-All Monte Carlo estimates converge to known analytical solutions within 0.1% error using 100,000 iterations.
+1. **Distance Distributions** - Histograms showing how distances are distributed
+2. **Convergence Plot** - Demonstrates how accuracy improves with more samples
+3. **Sample Points** - Visual representation of random point generation
 
 ## Mathematical Background
 
-Monte Carlo methods rely on the **Law of Large Numbers**: as the sample size increases, the sample average converges to the expected value.
+Monte Carlo methods rely on the **Law of Large Numbers**: as sample size increases, the sample average converges to the expected value.
 
-The accuracy of Monte Carlo estimates improves with √n, where n is the number of samples. This means:
+Accuracy improves with √n:
 - 100 samples → ±10% error
-- 10,000 samples → ±1% error  
-- 1,000,000 samples → ±0.1% error
+- 10,000 samples → ±1% error
+- 100,000 samples → ±0.1% error
+
+## Applications of Monte Carlo Methods
+
+- Financial modeling (options pricing, risk analysis)
+- Physics simulations (particle interactions, quantum mechanics)
+- Machine learning (reinforcement learning, Bayesian inference)
+- Computer graphics (ray tracing, global illumination)
 
 ## Author
 
-Robert Tran  
-Applied Mathematics & Computer Science, San Diego State University
-
-## Applications
-
-Monte Carlo methods are used in:
-- Financial modeling (option pricing, risk analysis)
-- Physics simulations (particle interactions, quantum mechanics)
-- Machine learning (reinforcement learning, optimization)
-- Computer graphics (rendering, ray tracing)
+**Robert Tran**  
+Applied Mathematics & Computer Science  
+San Diego State University
