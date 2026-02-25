@@ -8,9 +8,7 @@ from monte_carlo_geometry import run_simulations, average_distance_unit_square
 
 
 def plot_distance_distributions(distances_square: list, distances_circle: list):
-    """
-    Plot histograms of distance distributions for unit square and unit circle.
-    """
+
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
     
     # unit square distances
@@ -34,16 +32,13 @@ def plot_distance_distributions(distances_square: list, distances_circle: list):
     ax2.grid(True, alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig('distance_distributions.png', dpi=300, bbox_inches='tight')
-    print("✓ Saved: distance_distributions.png")
+    plt.savefig('dist_distributions.png', dpi=300, bbox_inches='tight')
+    print("✓ Saved: dist_distributions.png")
     plt.close()
 
 
 def plot_convergence(num_samples_list: list = [100, 500, 1000, 5000, 10000, 50000, 100000]):
-    """
-    Plot how Monte Carlo estimate converges to true value as sample size increases.
-    Demonstrates the Law of Large Numbers.
-    """
+
     estimates = []
     true_value = 0.521405
     
@@ -67,8 +62,8 @@ def plot_convergence(num_samples_list: list = [100, 500, 1000, 5000, 10000, 5000
     ax.grid(True, alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig('convergence_plot.png', dpi=300, bbox_inches='tight')
-    print("✓ Saved: convergence_plot.png")
+    plt.savefig('convplot.png', dpi=300, bbox_inches='tight')
+    print("✓ Saved: convplot.png")
     plt.close()
 
 
@@ -78,7 +73,7 @@ def plot_sample_points():
     """
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
     
-    # Unit square sample
+    # unit square sample
     num_points = 1000
     points_square = np.random.uniform(0, 1, (num_points, 2))
     
@@ -117,8 +112,8 @@ def plot_sample_points():
     ax2.grid(True, alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig('sample_points.png', dpi=300, bbox_inches='tight')
-    print("✓ Saved: sample_points.png")
+    plt.savefig('sample_pts.png', dpi=300, bbox_inches='tight')
+    print("✓ Saved: sample_pts.png")
     plt.close()
 
 
@@ -143,6 +138,6 @@ if __name__ == "__main__":
     print("COMPLETE - All visualizations saved")
     print("="*60)
     print("\nGenerated files:")
-    print("  • distance_distributions.png")
-    print("  • convergence_plot.png")
-    print("  • sample_points.png")
+    print("  • dist_distributions.png")
+    print("  • convplot.png")
+    print("  • sample_pts.png")

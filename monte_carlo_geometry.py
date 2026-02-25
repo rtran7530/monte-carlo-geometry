@@ -9,30 +9,12 @@ from typing import Tuple, List
 
 
 def distance_between_points(p1: np.ndarray, p2: np.ndarray) -> float:
-    """
-    Calculate Euclidean distance between two points.
-    
-    Args:
-        p1: First point as numpy array [x, y]
-        p2: Second point as numpy array [x, y]
-    
-    Returns:
-        Euclidean distance between points (Pythagorean theorem)
-    """
+    # calculates Eucliean distance (Pythagorean Theorem) between two points
     return np.sqrt(np.sum((p1 - p2) ** 2))
 
 
 def average_distance_unit_square(num_simulations: int = 100000) -> Tuple[float, List[float]]:
-    """
-    Calculate average distance between two random points in a unit square using Monte Carlo.
-    The unit square is defined as [0,1] x [0,1].
-    
-    Args:
-        num_simulations: Number of Monte Carlo iterations
-    
-    Returns:
-        Tuple of (average_distance, list_of_all_distances)
-    """
+   
     distances = []
     
     for _ in range(num_simulations):
@@ -49,15 +31,7 @@ def average_distance_unit_square(num_simulations: int = 100000) -> Tuple[float, 
 
 
 def generate_random_point_in_circle() -> np.ndarray:
-    """
-    Generate a random point uniformly distributed in a unit circle.
-    
-    Uses rejection sampling: generate random point in square [-1,1] x [-1,1]
-    and reject if outside unit circle.
-    
-    Returns:
-        Random point [x, y] inside unit circle
-    """
+
     while True:
         x = np.random.uniform(-1, 1)
         y = np.random.uniform(-1, 1)
@@ -66,17 +40,7 @@ def generate_random_point_in_circle() -> np.ndarray:
 
 
 def average_distance_unit_circle(num_simulations: int = 100000) -> Tuple[float, List[float]]:
-    """
-    Calculate average distance between two random points in a unit circle using Monte Carlo.
-    
-    Points are generated using rejection sampling to ensure uniform distribution.
-    
-    Args:
-        num_simulations: Number of Monte Carlo iterations
-    
-    Returns:
-        Tuple of (average_distance, list_of_all_distances)
-    """
+
     distances = []
     
     for _ in range(num_simulations):
@@ -93,15 +57,7 @@ def average_distance_unit_circle(num_simulations: int = 100000) -> Tuple[float, 
 
 
 def run_simulations(num_simulations: int = 100000) -> dict:
-    """
-    Run Monte Carlo simulations for both unit square and unit circle.
-    
-    Args:
-        num_simulations: Number of iterations for each simulation
-    
-    Returns:
-        Dictionary containing all simulation results
-    """
+    # run Monte Carlo
     print(f"Running Monte Carlo simulations with {num_simulations:,} iterations...\n")
     
     # unit square
@@ -135,7 +91,7 @@ def run_simulations(num_simulations: int = 100000) -> dict:
 
 
 if __name__ == "__main__":
-    # Run simulations
+    # run simulations
     results = run_simulations(num_simulations=100000)
     
     print("="*60)
