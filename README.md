@@ -15,7 +15,7 @@ These problems are difficult to solve analytically (they require advanced multiv
 
 ## Monte Carlo Approach
 
-Instead of solving with calculus, the Monte Carlo method can be utilized:
+Instead of solving using calculus, we can apply the Monte Carlo method:
 1. Generate 100,000 pairs of random points
 2. Calculate the distance for each pair
 3. Average all the distances
@@ -29,7 +29,7 @@ This approximates the analytical solution with high levels of accuracy.
 | Unit Square | ~0.52175 | [0.521405](https://mathworld.wolfram.com/SquareLinePicking.html) | <0.07% |
 | Unit Circle | ~0.90575 | [0.905414](https://mathworld.wolfram.com/DiskLinePicking.html) | <0.04% |
 
-*Note: Monte Carlo results vary slightly between runs due to randomness.*
+*Note: Monte Carlo results can vary slightly between runs due to randomness.*
 
 ## Implementation
 
