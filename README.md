@@ -15,7 +15,7 @@ These problems are difficult to solve analytically (they require complex multiva
 
 ## Monte Carlo Approach
 
-Instead of solving with calculus, we:
+Instead of solving with calculus:
 1. Generate 100,000 pairs of random points
 2. Calculate the distance for each pair
 3. Average all the distances

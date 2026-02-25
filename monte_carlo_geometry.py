@@ -17,7 +17,7 @@ def distance_between_points(p1: np.ndarray, p2: np.ndarray) -> float:
         p2: Second point as numpy array [x, y]
     
     Returns:
-        Euclidean distance between points
+        Euclidean distance between points (Pythagorean theorem)
     """
     return np.sqrt(np.sum((p1 - p2) ** 2))
 
