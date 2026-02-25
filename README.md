@@ -77,9 +77,9 @@ python visualizations.py
 The code generates three plots:
 
 <div style="display: flex; justify-content: space-between;">
-  <img src="dist_distributions.png" width="250" height="200">
-  <img src="convplot.png" width="250" height="200">
-  <img src="sample_pts.png" width="250" height="200">
+  <img src="dist_distributions.png" width="300" height="200">
+  <img src="convplot.png" width="300" height="200">
+  <img src="sample_pts.png" width="300" height="200">
 </div>
 
 1. **Distance Distributions** - Histograms showing how distances are distributed
