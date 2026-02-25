@@ -75,9 +75,12 @@ python visualizations.py
 ## Visualizations
 
 The code generates three plots:
-<img src="dist_distributions.png" width="400">
-<img src="convplot.png" width="400">
-<img src="sample_pts.png" width="400">
+
+<div style="display: flex; justify-content: space-between;">
+  <img src="dist_distributions.png" width="250" height="200">
+  <img src="convplot.png" width="250" height="200">
+  <img src="sample_pts.png" width="250" height="200">
+</div>
 
 1. **Distance Distributions** - Histograms showing how distances are distributed
 2. **Convergence Plot** - Demonstrates how accuracy improves with more samples
