@@ -5,7 +5,7 @@ What is the average distance between two random points in a unit square? A unit 
 
 ## The Problem
 
-![Problem Diagrams](assets/problem_diagrams.png)
+![Problem Diagrams](problem_diagrams.png)
 
 **Unit Square:** If you randomly pick two points in a square with sides of length 1, what is the expected distance between them?
 
@@ -66,10 +66,10 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 # Run simulations
-python -m src.monte_carlo_geometry
+python monte_carlo_geometry.py
 
 # Generate visualizations
-python -m src.visualizations
+python visualizations.py
 ```
 
 ## Visualizations
