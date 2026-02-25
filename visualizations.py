@@ -1,5 +1,5 @@
 """
-Visualizations for Monte Carlo geometric probability simulations
+Visualization for Monte Carlo geometric probability simulations
 """
 
 import numpy as np
