@@ -1,14 +1,14 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Create figure with two subplots
+# create figure with two subplots
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
 
-# Unit Square
+# unit square
 square = plt.Rectangle((0, 0), 1, 1, fill=False, edgecolor='m', linewidth=3)
 ax1.add_patch(square)
 
-# Two random points in square
+# two random points in square
 p1 = np.random.uniform(0, 1, 2)
 p2 = np.random.uniform(0, 1, 2)
 
@@ -25,13 +25,13 @@ ax1.set_title('Unit Square [0,1] × [0,1]', fontsize=14, fontweight='bold')
 ax1.grid(True, alpha=0.3)
 ax1.legend(loc = 'upper left', fontsize=10)
 
-# Unit Circle
+# unit circle
 theta = np.linspace(0, 2*np.pi, 100)
 x_circle = np.cos(theta)
 y_circle = np.sin(theta)
 ax2.plot(x_circle, y_circle, 'm-', linewidth=3)
 
-# Two random points in circle
+# two random points in circle
 def random_point_in_circle():
     while True:
         x = np.random.uniform(-1, 1)

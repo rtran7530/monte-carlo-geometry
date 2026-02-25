@@ -11,23 +11,25 @@ What is the average distance between two random points in a unit square? A unit 
 
 **Unit Circle:** What about if the points are in a circle with radius 1?
 
-These problems are difficult to solve analytically (they require complex multivariable calculus), but Monte Carlo simulation provides an elegant computational solution.
+These problems are difficult to solve analytically (they require advanced multivariable calculus). [Monte Carlo simulations](https://www.ibm.com/think/topics/monte-carlo-simulation) can be used to obtain an elegant computational solution.
 
 ## Monte Carlo Approach
 
-Instead of solving with calculus:
+Instead of solving with calculus, the Monte Carlo method can be utilized:
 1. Generate 100,000 pairs of random points
 2. Calculate the distance for each pair
 3. Average all the distances
 
-This approximates the analytical solution with high accuracy.
+This approximates the analytical solution with high levels of accuracy.
 
 ## Results
 
 | Geometry | Monte Carlo Result | Analytical Value | Error |
 |----------|-------------------|------------------|-------|
-| Unit Square | ~0.521405 | 0.521405 | <0.01% |
-| Unit Circle | ~0.905414 | 128/(45π) ≈ 0.905414 | <0.01% |
+| Unit Square | ~0.52175 | [0.521405](https://mathworld.wolfram.com/SquareLinePicking.html) | <0.07% |
+| Unit Circle | ~0.90575 | [0.905414](https://mathworld.wolfram.com/DiskLinePicking.html) | <0.04% |
+
+*Note: Monte Carlo results vary slightly between runs due to randomness.*
 
 ## Implementation
 
@@ -82,7 +84,7 @@ The code generates three plots:
 
 Monte Carlo methods rely on the **Law of Large Numbers**: as sample size increases, the sample average converges to the expected value.
 
-Accuracy improves with √n:
+Standard error decreases proportional to 1/√n:
 - 100 samples → ±10% error
 - 10,000 samples → ±1% error
 - 100,000 samples → ±0.1% error

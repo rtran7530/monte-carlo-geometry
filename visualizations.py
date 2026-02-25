@@ -1,5 +1,5 @@
 """
-Visualization functions for Monte Carlo geometric probability simulations
+Visualizations for Monte Carlo geometric probability simulations
 """
 
 import numpy as np
@@ -13,7 +13,7 @@ def plot_distance_distributions(distances_square: list, distances_circle: list):
     """
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
     
-    # Unit square distances
+    # unit square distances
     ax1.hist(distances_square, bins=50, density=True, alpha=0.7, color='blue', edgecolor='black')
     ax1.axvline(np.mean(distances_square), color='red', linestyle='--', linewidth=2, 
                 label=f'Mean: {np.mean(distances_square):.4f}')
@@ -23,7 +23,7 @@ def plot_distance_distributions(distances_square: list, distances_circle: list):
     ax1.legend(fontsize=10)
     ax1.grid(True, alpha=0.3)
     
-    # Unit circle distances
+    # unit circle distances
     ax2.hist(distances_circle, bins=50, density=True, alpha=0.7, color='green', edgecolor='black')
     ax2.axvline(np.mean(distances_circle), color='red', linestyle='--', linewidth=2,
                 label=f'Mean: {np.mean(distances_circle):.4f}')
@@ -52,13 +52,13 @@ def plot_convergence(num_samples_list: list = [100, 500, 1000, 5000, 10000, 5000
         avg_dist, _ = average_distance_unit_square(n)
         estimates.append(avg_dist)
         error = abs(avg_dist - true_value)
-        print(f"  n={n:6d}: estimate = {avg_dist:.6f}, error = {error:.6f}")
+        print(f"  n={n:6d}: estimate = {avg_dist:.5f}, error = {error:.5f}")
     
-    # Create plot
+    # create plot
     fig, ax = plt.subplots(figsize=(10, 6))
     
     ax.plot(num_samples_list, estimates, 'bo-', linewidth=2, markersize=8, label='Monte Carlo Estimate')
-    ax.axhline(true_value, color='red', linestyle='--', linewidth=2, label=f'Analytical Value: {true_value:.6f}')
+    ax.axhline(true_value, color='red', linestyle='--', linewidth=2, label=f'Analytical Value: {true_value:.5f}')
     ax.set_xscale('log')
     ax.set_xlabel('Number of Samples (log scale)', fontsize=12)
     ax.set_ylabel('Estimated Average Distance', fontsize=12)
@@ -91,7 +91,7 @@ def plot_sample_points():
     ax1.set_title(f'Random Points in Unit Square (n={num_points})', fontsize=14, fontweight='bold')
     ax1.grid(True, alpha=0.3)
     
-    # Unit circle sample with rejection sampling
+    # unit circle sample with rejection sampling
     points_circle = []
     while len(points_circle) < num_points:
         x = np.random.uniform(-1, 1)
@@ -100,7 +100,7 @@ def plot_sample_points():
             points_circle.append([x, y])
     points_circle = np.array(points_circle)
     
-    # Draw circle boundary
+    # draw circle boundary
     theta = np.linspace(0, 2*np.pi, 100)
     circle_x = np.cos(theta)
     circle_y = np.sin(theta)
@@ -127,14 +127,14 @@ if __name__ == "__main__":
     print("MONTE CARLO GEOMETRIC PROBABILITY SIMULATIONS")
     print("="*60 + "\n")
     
-    # Run simulations
+    # run simulations
     results = run_simulations(num_simulations=100000)
     
     print("\n" + "="*60)
     print("GENERATING VISUALIZATIONS")
     print("="*60)
     
-    # Generate all plots
+    # generate all plots
     plot_distance_distributions(results['distances_square'], results['distances_circle'])
     plot_convergence()
     plot_sample_points()

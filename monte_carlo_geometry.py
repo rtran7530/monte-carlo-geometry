@@ -25,7 +25,6 @@ def distance_between_points(p1: np.ndarray, p2: np.ndarray) -> float:
 def average_distance_unit_square(num_simulations: int = 100000) -> Tuple[float, List[float]]:
     """
     Calculate average distance between two random points in a unit square using Monte Carlo.
-    
     The unit square is defined as [0,1] x [0,1].
     
     Args:
@@ -37,11 +36,11 @@ def average_distance_unit_square(num_simulations: int = 100000) -> Tuple[float, 
     distances = []
     
     for _ in range(num_simulations):
-        # Generate two random points in unit square
+        # generate two random points in unit square
         point1 = np.random.uniform(0, 1, 2)
         point2 = np.random.uniform(0, 1, 2)
         
-        # Calculate distance
+        # calculate distance
         dist = distance_between_points(point1, point2)
         distances.append(dist)
     
@@ -81,11 +80,11 @@ def average_distance_unit_circle(num_simulations: int = 100000) -> Tuple[float, 
     distances = []
     
     for _ in range(num_simulations):
-        # Generate two random points in unit circle using rejection sampling
+        # generate two random points in unit circle
         point1 = generate_random_point_in_circle()
         point2 = generate_random_point_in_circle()
         
-        # Calculate distance
+        # calculate distance
         dist = distance_between_points(point1, point2)
         distances.append(dist)
     
@@ -105,17 +104,27 @@ def run_simulations(num_simulations: int = 100000) -> dict:
     """
     print(f"Running Monte Carlo simulations with {num_simulations:,} iterations...\n")
     
-    # Unit square
-    print("Problem 1: Average distance between two random points in unit square")
+    # unit square
     avg_dist_square, distances_square = average_distance_unit_square(num_simulations)
-    print(f"Monte Carlo Result: {avg_dist_square:.6f}")
-    print(f"Analytical Value:   ~0.521405\n")
+    true_square = (np.sqrt(2) + 2 + 5 * np.log(1 + np.sqrt(2))) / 15
+
+    print("Problem 1: Average distance in unit square")
+    print(f"Monte Carlo Result: {avg_dist_square:.5f}")
+    print(f"Analytical Value: {true_square:.5f}")
+
+    error_percent = abs(avg_dist_square - true_square) / true_square * 100
+    print(f"Error: {error_percent:.2f}%\n")
     
-    # Unit circle
-    print("Problem 2: Average distance between two random points in unit circle")
+    # unit circle
     avg_dist_circle, distances_circle = average_distance_unit_circle(num_simulations)
-    print(f"Monte Carlo Result: {avg_dist_circle:.6f}")
-    print(f"Analytical Value:   ~0.905414 (128/(45π))\n")
+    true_circle = 128 / (45 * np.pi)
+    
+    print("Problem 2: Average distance in unit circle")
+    print(f"Monte Carlo Result: {avg_dist_circle:.5f}")
+    print(f"Analytical Value: {true_circle:.5f}")
+    
+    error_percent = abs(avg_dist_circle - true_circle) / true_circle * 100
+    print(f"Error: {error_percent:.2f}%\n")
     
     return {
         'avg_dist_square': avg_dist_square,
@@ -132,6 +141,6 @@ if __name__ == "__main__":
     print("="*60)
     print("SUMMARY OF RESULTS")
     print("="*60)
-    print(f"Average distance (unit square): {results['avg_dist_square']:.6f}")
-    print(f"Average distance (unit circle): {results['avg_dist_circle']:.6f}")
+    print(f"Average distance (unit square): {results['avg_dist_square']:.5f}")
+    print(f"Average distance (unit circle): {results['avg_dist_circle']:.5f}")
     print("="*60)
