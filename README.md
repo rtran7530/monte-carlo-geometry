@@ -82,9 +82,9 @@ The code generates three plots:
 
 ## Mathematical Background
 
-Monte Carlo methods rely on the **Law of Large Numbers**: as sample size increases, the sample average converges to the expected value.
+Monte Carlo methods rely on the **[Law of Large Numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers)**: as sample size increases, the sample average converges to the expected value.
 
-Standard error decreases at a rate proportional to 1/√n:
+Standard error decreases at a rate **proportional** to 1/√n:
 - 100 samples → ±10% error
 - 10,000 samples → ±1% error
 - 100,000 samples → ±0.1% error
