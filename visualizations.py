@@ -84,7 +84,7 @@ def plot_sample_points():
     ax1.set_title(f'Random Points in Unit Square (n={num_points})', fontsize=14, fontweight='bold')
     ax1.grid(True, alpha=0.3)
     
-    # unit circle sample with rejection sampling
+    # unit circle sample
     points_circle = []
     while len(points_circle) < num_points:
         x = np.random.uniform(-1, 1)
