@@ -68,9 +68,7 @@ def plot_convergence(num_samples_list: list = [100, 500, 1000, 5000, 10000, 5000
 
 
 def plot_sample_points():
-    """
-    Visualize random point sampling in unit square and unit circle.
-    """
+    
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
     
     # unit square sample
